@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ecart</title>
+    <title>ECart</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,7 +9,20 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class='container'>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="<%= root_path %>">Ecart</a>
+      
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li></li>
+        </ul>
+        <b><a data-toggle='modal' data-target='#cartModal' class='text-danger' id='items_cart_count' style="cursor: pointer">0</a></b>&nbsp;&nbsp;My Cart
+      </div>
+    </nav>
+    <p id="notice" class='notice text-success'><%= flash[:notice] %></p>
+    <p id="error" class='error text-danger'><%= flash[:error] %></p>
+      <%= yield %>
   </body>
 </html>

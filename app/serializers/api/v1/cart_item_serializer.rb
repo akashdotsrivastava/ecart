@@ -1,5 +1,5 @@
 class Api::V1::CartItemSerializer < ActiveModel::Serializer
-  attributes :name, :quantity, :total_price, :total_discount, :final_price
+  attributes :item_id, :name, :quantity, :total_price, :total_discount, :final_price
 
   def total_discount
     item.discount_for_quantity(@object.quantity)

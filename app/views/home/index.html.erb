@@ -1,0 +1,45 @@
+<div class='container' id='main_container'>
+  <table class='table table-hover products-table' id='products-table'>
+    <tr>
+      <th>Item Name</th>
+      <th>Price</th>
+      <th>Discounts</th>
+      <th>In Cart</th>
+      <th></th>
+    </tr>
+    <tbody id='products-table-body'>
+    </tbody>
+  </table>
+</div>
+
+<div id="cartModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id='cartModalHeader' class="modal-title text-center">My Cart</h4>
+      </div>
+      <div class="modal-body">
+        <p id='modal_body_header'></p>
+        <table class='table table-hover' id='cartTable'>
+          <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Original Price</th>
+            <th>Discount</th>
+            <th>Final Price</th>
+          </tr>
+          <tbody id='cartTableTbody'>
+
+          </tbody>
+        </table>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
