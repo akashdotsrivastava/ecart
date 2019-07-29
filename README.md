@@ -52,20 +52,32 @@ The My Cart option opens up a modal which shows up your cart. It contains all th
 **Small Assumptions and ReadUP**
 
 1. Item discount(model ItemDiscount) has been designed as under:
+
     a. an item discount, will contain an `item_id` with two values `quantity` and `discount`. That means for each buying of `quantity` no of items `item_id`, a Rs `discount` discount is applied.
+
     b. One can add many such item discounts to an item. The final discount applied, will be the one with most quantity, less than or equal to quantity of the product in cart. If there are two or more such (applied on same highest quantity), the one with most discount will be chosen.
+
     c. 0.0 item discount if no item discount, or no active item discount is found
+
     d. The main invokation of discount on items is called from `Item.discount_for_quantity(quantity)` method. Future methods for adding other item discounts can be added here.
 
 2. Cart discount(model CartDiscount) has been designed as under:
+
     a. a cart discount, will contain a `total_basket_price` and an `additional discount`. That means for each cart value more than or equal to Rs `total_basket_price`, there will be Rs `additional_discount` discount applied finally on the total cart value
+
     b. One can add many cart discounts. The final discount applied, will be the one with the most `total_basket_price`, less than or equal to total cart value after all item discounts. The there are two or more such cart discounts (applicable on same `total_basket_price`), the one with most additional discount will be chosen.
+
     c. 0.0 cart discount, if no cart discount or no active cart discount is found.
+
     d. The main invokation of discount on cart is called from `Cart.cart_discount_for(cart_price)` method. Future methods for adding other cart discounts can be added here.
 
-3. Most of the json forming logic for the APIs, sits in the serializers. `Api::V1::ItemSerializer` builds the items json in items api. `Api::V1::CartItemSerializer` builds the individual cart item details and `Api::V!::CartItemsSerializer` builds the the complete cart details
+3. Most of the json forming logic for the APIs, sits in the serializers. 
+
+    `Api::V1::ItemSerializer` builds the items json in items api. 
+    `Api::V1::CartItemSerializer` builds the individual cart item details and `Api::V!::CartItemsSerializer` builds the the complete cart details
 
 4. Other controllers and serializers not mentioned in these docs are simply there to support the front end views and are verbose themselves
+
 5. The front end is a combination of javascript DOM manipulation and jQuery.
 
 
